@@ -7,6 +7,7 @@
       src="https://kit.fontawesome.com/9ef1e52ac8.js"
       crossorigin="anonymous"
     ></script>
+    <script src="../../../static/main.js" defer></script>
     <title>MyBlog</title>
     <style>
       /* PC version CSS */
@@ -54,6 +55,7 @@
           align-items: flex-start;
         }
         .head-menu {
+          display: none;
           flex-direction: column;
           align-items: center;
           width: 100%;
@@ -63,6 +65,7 @@
           text-align: center;
         }
         .head-link {
+          display: none;
           justify-content: center;
           width: 100%;
         }
@@ -78,7 +81,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="header">
+      <nav class="header">
         <div class="head-logo">
           <i class="fa-solid fa-code"></i>
           <a href="">codepage</a>
@@ -92,10 +95,10 @@
           <li><i class="fa-brands fa-instagram"></i></li>
           <li><i class="fa-brands fa-github"></i></li>
         </ul>
-        <button class="navbar_toggleBtn">
+        <a href="#" class="navbar_toggleBtn">
           <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
+        </a>
+      </nav>
       <div class="content"></div>
       <div class="sidebar"></div>
       <div class="footer"></div>
