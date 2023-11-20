@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/9ef1e52ac8.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>MyBlog</title>
+    <style>
+      /* PC version CSS */
+      body {
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: aliceblue;
+        padding: 8px 12px;
+      }
+      .head-menu {
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+      }
+      .head-menu li {
+        padding: 8px 12px;
+      }
+      .head-link {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+      }
+      .head-link li {
+        padding: 8px 12px;
+      }
+      .navbar_toggleBtn {
+        display: none;
+        position: absolute;
+        right: 32px;
+        font-size: 24px;
+      }
+
+      /* Tablet and Mobile version CSS */
+      @media screen and (max-width: 1023px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .head-menu {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+        .head-menu li {
+          width: 100%;
+          text-align: center;
+        }
+        .head-link {
+          justify-content: center;
+          width: 100%;
+        }
+        .navbar_toggleBtn {
+          display: block;
+        }
+        .head-menu.active,
+        .head-link.active {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="head-logo">
+          <i class="fa-solid fa-code"></i>
+          <a href="">codepage</a>
+        </div>
+        <ul class="head-menu">
+          <li><a href="">HOME</a></li>
+          <li><a href="">ABOUT</a></li>
+          <li><a href="">CONTACT</a></li>
+        </ul>
+        <ul class="head-link">
+          <li><i class="fa-brands fa-instagram"></i></li>
+          <li><i class="fa-brands fa-github"></i></li>
+        </ul>
+        <button class="navbar_toggleBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+      <div class="content"></div>
+      <div class="sidebar"></div>
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>
