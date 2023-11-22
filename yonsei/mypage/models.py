@@ -9,7 +9,11 @@ class User_Info(models.Model):
     u_name = models.CharField(max_length=10)
     u_school = models.CharField(max_length=20)
 
+class Category(models.Model):
+    cate_name = models.CharField(max_length=50)
+
 class Post(models.Model):
+    cate = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     p_title = models.CharField(max_length=50)
     p_desc = models.CharField(max_length=100)
     p_contents = models.TextField()
@@ -17,12 +21,8 @@ class Post(models.Model):
     p_updated = models.DateTimeField(auto_now=True)
     p_secure = models.BooleanField(default=True)
 
-class Category(models.Model):
-    p_id = models.ForeignKey(Post, on_delete=models.CASCADE)
-    cate_name = models.CharField(max_length=50)
-
 class Comments(models.Model):
-    p_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    p = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     c_user_id = models.CharField(max_length=20)
     c_user_pw = models.CharField(max_length=20)
     c_contents = models.TextField()

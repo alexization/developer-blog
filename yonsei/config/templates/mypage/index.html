@@ -33,7 +33,13 @@
         </a>
       </div>
       <div class="middle">
-        <div class="sidebar"></div>
+        <div class="sidebar">
+          {% for category in category_list %}
+          <div class="category-box">
+            {{ category.id }} {{ category.cate_name }}
+          </div>
+          {% endfor %}
+        </div>
         <div class="content"></div>
       </div>
       <div class="footer"></div>
