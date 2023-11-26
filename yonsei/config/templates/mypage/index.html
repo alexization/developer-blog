@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -7,8 +8,14 @@
       src="https://kit.fontawesome.com/9ef1e52ac8.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="../../../static/css/index.css" />
-    <script src="../../../static/main.js" defer></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="{% static 'js/main.js' %}" defer></script>
     <title>MyBlog</title>
   </head>
 
@@ -27,20 +34,42 @@
         <ul class="head-link">
           <li><i class="fa-brands fa-instagram"></i></li>
           <li><i class="fa-brands fa-github"></i></li>
+          <li>
+            <a href="login"
+              ><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a
+            >
+          </li>
         </ul>
         <a href="#" class="navbar_toggleBtn">
           <i class="fa-solid fa-bars"></i>
         </a>
       </div>
+      <div class="write-box">
+        <button class="write-button">글쓰기</button>
+      </div>
       <div class="middle">
         <div class="sidebar">
+          <div class="cate-title">카테고리 목록</div>
           {% for category in category_list %}
-          <div class="category-box">
-            {{ category.id }} {{ category.cate_name }}
+          <div
+            onclick="location.href='{{ category.cate_name | lower}}/';"
+            class="category-box"
+          >
+            {{ category.cate_name }}
           </div>
           {% endfor %}
         </div>
-        <div class="content"></div>
+        <div class="content">
+          {% for post in post_list %}
+          <div
+            onclick="location.href='{{ post.cate | lower}}/{{ post.id }}/';"
+            class="post-box"
+          >
+            <h1>{{ post.p_title }}</h1>
+            <h4>{{ post.p_desc }}</h4>
+          </div>
+          {% endfor%}
+        </div>
       </div>
       <div class="footer"></div>
     </div>
