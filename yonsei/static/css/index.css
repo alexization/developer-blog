@@ -13,6 +13,11 @@ a {
   align-items: center;
   background-color: aliceblue;
   padding: 8px 12px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+}
+.header a {
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 18px;
 }
 .head-menu {
   display: flex;
@@ -36,6 +41,10 @@ a {
   right: 32px;
   font-size: 24px;
 }
+.nav-sidebar {
+  display: none;
+  width: 100%;
+}
 .write-box {
   width: 100%;
   height: 50px;
@@ -51,6 +60,7 @@ a {
   border: 1px black solid;
   background: none;
   margin-right: 30px;
+  cursor: pointer;
 }
 .middle {
   display: flex;
@@ -67,7 +77,7 @@ a {
   width: 100%;
 }
 .category-box {
-  border-bottom: 1px aliceblue solid;
+  border-bottom: 1px rgba(160, 211, 255, 0.704) solid;
   height: 50px;
   width: 100%;
   display: flex;
@@ -77,24 +87,45 @@ a {
   font-family: "Nanum Gothic", sans-serif;
 }
 .content {
-  width: 70%;
+  width: 60%;
   list-style: none;
 }
 .post-box {
-  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
   width: 100%;
   cursor: pointer;
   margin-bottom: 20px;
   padding-left: 10px;
   padding-top: 5px;
-  background-color: rgba(215, 215, 215, 0.5);
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background-color: rgba(215, 215, 215, 0.3);
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.post-box img {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
 }
 .footer {
   width: 100%;
-  height: 100px;
+  height: 150px;
   margin-top: 50px;
+  background-color: aliceblue;
+}
+.go-first {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 25px;
+  background-color: rgb(116, 190, 255);
+  border: none;
+  cursor: pointer;
 }
 /* Tablet and Mobile version CSS */
 @media screen and (max-width: 1023px) {
@@ -121,7 +152,8 @@ a {
     display: block;
   }
   .head-menu.active,
-  .head-link.active {
+  .head-link.active,
+  .nav-sidebar.active {
     display: flex;
   }
   .sidebar {

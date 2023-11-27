@@ -22,6 +22,7 @@ class Post(models.Model):
     p_contents = models.TextField()
     p_created = models.DateTimeField(auto_now_add=True, null=True)
     p_updated = models.DateTimeField(auto_now=True, null=True)
+    thumbnail = models.ImageField(upload_to="post", blank=True)
 
     def __str__(self):
         return self.p_title

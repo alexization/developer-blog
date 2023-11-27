@@ -6,7 +6,15 @@ from .models import Comments
 
 # Register your models here.
 
-admin.site.register(User_Info)
-admin.site.register(Post)
-admin.site.register(Category)
-admin.site.register(Comments)
+@admin.register(User_Info)
+class User_InfoAdmin(admin.ModelAdmin):
+    pass
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ["p_title", "thumbnail"]
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
+@admin.register(Comments)
+class CommentsAdmin(admin.ModelAdmin):
+    pass
