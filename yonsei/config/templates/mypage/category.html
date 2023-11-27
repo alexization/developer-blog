@@ -78,12 +78,12 @@
         <div class="sidebar">
           <div class="cate-title">카테고리 목록</div>
           <div onclick="location.href='/';" class="category-box">ALL</div>
-          {% for category in category_list %}
+          {% for category in categorys %}
           <div
             onclick="location.href='/category/{{ category.cate_name | lower}}/';"
             class="category-box"
           >
-            {{ category.cate_name }}
+            {{ category.cate_name }} ({{ category.post_count }})
           </div>
           {% endfor %}
         </div>
@@ -107,6 +107,9 @@
         </div>
       </div>
       <div class="footer"></div>
+      <button class="go-first" onclick="window.scrollTo(0,0);">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
     </div>
   </body>
 </html>
