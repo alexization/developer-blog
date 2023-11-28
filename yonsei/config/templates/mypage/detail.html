@@ -29,14 +29,25 @@
       </div>
       <div class="post-detail">
         <p>{{post.p_contents | linebreaksbr }}</p>
-        <ul class="comments">
-          {% for comment in post.comments_set.all %}
-          <li class="comment">{{ comment.c_contents }}</li>
-          {% empty %}
-          <li class="comment-empty">아직 댓글이 없습니다</li>
-          {% endfor %}
-        </ul>
       </div>
+    </div>
+    <div class="comment-box">
+      <form method="POST">
+        {% csrf_token %}
+        <textarea name="comment"></textarea>
+        <label>ID</label>
+        <input type="text" name="comment_id" />
+        <label>PW</label>
+        <input type="password" name="comment_pw" />
+        <button type="submit">댓글 작성</button>
+      </form>
+      <ul class="comments">
+        {% for comment in post.comments_set.all %}
+        <li class="comment">{{ comment.c_contents }}</li>
+        {% empty %}
+        <li class="comment-empty">아직 댓글이 없습니다</li>
+        {% endfor %}
+      </ul>
     </div>
     <div class="footer"></div>
   </body>

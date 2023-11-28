@@ -56,7 +56,7 @@
         </ul>
         <div class="nav-sidebar">
           <div onclick="location.href='/';" class="category-box">ALL</div>
-          {% for category in category_list %}
+          {% for category in categorys %}
           <div
             onclick="location.href='/category/{{ category.cate_name | lower}}/';"
             class="category-box"

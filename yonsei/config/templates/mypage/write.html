@@ -7,5 +7,31 @@
   </head>
   <body>
     <h1>Post Write page</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="category">카테고리</label>
+      <select name="categorys" id="category">
+        {% for cate in category_list %}
+        <option value="{{ cate.id }}">{{ cate.cate_name }}</option>
+        {% endfor %}
+      </select>
+      <div>
+        <label>제목</label>
+        <input type="text" name="title" />
+      </div>
+      <div>
+        <label>설명</label>
+        <input type="text" name="description" />
+      </div>
+      <div>
+        <label>내용</label>
+        <textarea name="content" cols="50" rows="10"></textarea>
+      </div>
+      <div>
+        <label>썸네일</label>
+        <input name="thumbnail" type="file" />
+      </div>
+      <button type="submit">작성</button>
+    </form>
   </body>
 </html>
