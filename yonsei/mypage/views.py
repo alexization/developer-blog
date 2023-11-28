@@ -66,6 +66,8 @@ def post_write(request):
             p_title = title,
             p_desc = description,
             p_contents = content,
+            p_created = timezone.now(),
+            p_updated = timezone.now(),
             thumbnail = thumbnail
         )
         return redirect(f"/posts/{post.id}")
