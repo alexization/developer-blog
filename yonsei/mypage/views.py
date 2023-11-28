@@ -8,10 +8,11 @@ from .models import User_Info
 
 # Create your views here.
 def main(request):
-    post_list = Post.objects.order_by('-id')
+    # post_list = Post.objects.order_by('-id')
     categorys = Category.objects.annotate(post_count=Count('post'))
+    posts = Post.objects.annotate(comments_count=Count('comments')).order_by('-id')
 
-    context = {'post_list' : post_list, 'categorys': categorys}
+    context = {'categorys': categorys, 'posts' : posts}
     return render(request, 'mypage/index.html', context)
 
 def login(request):
@@ -24,7 +25,7 @@ def category(request, cate_name):
     for cate in category_list:
         if cate.cate_name.lower() == cate_name:
             category_id = cate.id
-    post_list = Post.objects.filter(cate_id=category_id)
+    post_list = Post.objects.filter(cate_id=category_id).order_by('-id')
 
     context = {'categorys' : categorys, 'post_list' : post_list, 'cate_name' : cate_name}
     return render(request, 'mypage/category.html', context)

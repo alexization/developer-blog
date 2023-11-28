@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;400;700&display=swap");
+
 /* PC version CSS */
 body {
   margin: 0;
@@ -11,12 +16,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: aliceblue;
+  background-color: #e7e7e767;
   padding: 8px 12px;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.07);
 }
 .header a {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   font-size: 18px;
 }
 .head-menu {
@@ -57,10 +62,12 @@ a {
   width: 100px;
   height: 40px;
   border-radius: 40px;
-  border: 1px black solid;
+  border: 1px rgba(0, 0, 0, 0.4) solid;
   background: none;
   margin-right: 30px;
   cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif;
+  color: rgba(0, 0, 0, 0.6);
 }
 .middle {
   display: flex;
@@ -68,23 +75,67 @@ a {
   margin-top: 20px;
 }
 .sidebar {
-  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+}
+.profile {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+  border-radius: 75px;
+}
+.profile-img img {
+  width: 100%;
+  height: 100%;
+}
+.profile-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.team-title {
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 28px;
+  margin-bottom: 0px;
+}
+.team-semititle {
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 18px;
+  color: rgb(121, 121, 121);
 }
 .cate-title {
   font-family: "Nanum Gothic", sans-serif;
-  border-bottom: 1px black solid;
+  border-bottom: 2px black solid;
   height: 30px;
   width: 100%;
+  margin-top: 20px;
 }
 .category-box {
-  border-bottom: 1px rgba(160, 211, 255, 0.704) solid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   height: 50px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
+}
+.category-count {
+  font-family: "Rubik", sans-serif;
+  color: rgb(118, 118, 118);
 }
 .content {
   width: 60%;
@@ -100,21 +151,42 @@ a {
   margin-bottom: 20px;
   padding-left: 10px;
   padding-top: 5px;
-  background-color: rgba(215, 215, 215, 0.3);
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 .post-box img {
   width: 150px;
   height: 150px;
   margin-right: 20px;
+  object-fit: contain;
+}
+.content-text {
+  display: flex;
+  flex-direction: column;
+}
+.content-title {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 0;
+}
+.post-time {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 200;
+  margin: 0;
+}
+.content-description {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+}
+.comment-count {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 200;
 }
 .footer {
   width: 100%;
-  height: 150px;
+  height: 100px;
   margin-top: 50px;
-  background-color: aliceblue;
+  background-color: #e7e7e767;
 }
 .go-first {
   width: 50px;
@@ -123,7 +195,8 @@ a {
   bottom: 30px;
   right: 30px;
   border-radius: 25px;
-  background-color: rgb(116, 190, 255);
+  background-color: #54545467;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
   border: none;
   cursor: pointer;
 }
