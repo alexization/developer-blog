@@ -23,6 +23,11 @@ a {
 .header a {
   font-family: "Chakra Petch", sans-serif;
   font-size: 18px;
+  transition: 0.5s;
+  color: black;
+}
+.header a:hover {
+  color: #4169e1;
 }
 .head-menu {
   display: flex;
@@ -132,6 +137,11 @@ a {
   align-items: center;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
+  color: black;
+  transition: 0.5s;
+}
+.category-box:hover {
+  color: #4169e1;
 }
 .category-count {
   font-family: "Rubik", sans-serif;
@@ -181,12 +191,26 @@ a {
 .comment-count {
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 200;
+  margin-left: 3px;
 }
 .footer {
   width: 100%;
   height: 100px;
   margin-top: 50px;
   background-color: #e7e7e767;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.head-title {
+  font-family: "Chakra Petch", sans-serif;
+}
+.copyright {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 200;
+  margin: 0;
+  font-size: 12px;
 }
 .go-first {
   width: 50px;

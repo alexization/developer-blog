@@ -8,47 +8,124 @@
       src="https://kit.fontawesome.com/9ef1e52ac8.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- static 폴더내에 존재하는 detail.css 파일 사용 -->
     <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
-      rel="stylesheet"
-    />
+
+    <!-- nav-bar 토글 사용을 위한 JS코드 사용 -->
+    <script src="{% static 'js/main.js' %}" defer></script>
     <title>{{post.p_title}}</title>
   </head>
   <body>
-    <div class="header">
-      <p>{{post.p_title}}</p>
-    </div>
-    <div class="content">
-      <div class="thumbnail">
-        {% if post.thumbnail %}
-        <img src="{{post.thumbnail.url}}" />
-        {% endif %}
+    <div class="container">
+      <div class="header">
+        <div class="head-logo">
+          <a href="/"> <i class="fa-solid fa-code"></i> web.yonsei</a>
+        </div>
+        <ul class="head-menu">
+          <li><a href="/">HOME</a></li>
+          <li><a href="/about">ABOUT</a></li>
+          <li>
+            <a
+              target="_blank"
+              href="mailto:example@yonsei.ac.kr?subject=contact e-mail"
+              >CONTACT</a
+            >
+          </li>
+        </ul>
+        <ul class="head-link">
+          <li>
+            <a href="https://www.instagram.com" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.github.com" target="_blank"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/login"
+              ><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a
+            >
+          </li>
+        </ul>
+
+        <!-- 1024px 미만의 경우 카테고리 목록이 nav-bar로 들어감 -->
+        <div class="nav-sidebar">
+          <div onclick="location.href='/';" class="category-box">ALL</div>
+          {% for category in categorys %}
+          <div
+            onclick="location.href='/category/{{ category.cate_name | lower}}/';"
+            class="category-box"
+          >
+            {{ category.cate_name }}
+          </div>
+          {% endfor %}
+        </div>
+        <a href="#" class="navbar_toggleBtn">
+          <i class="fa-solid fa-bars"></i>
+        </a>
       </div>
-      <div class="post-detail">
-        <p>{{post.p_contents | linebreaksbr }}</p>
+
+      <!-- 게시글 상세 내용 -->
+      <div class="content">
+        <!-- 썸네일 및 날짜 / 내용 -->
+        <div class="content-text">
+          <!-- 썸네일 -->
+          <div class="thumbnail">
+            {% if post.thumbnail %}
+            <img src="{{post.thumbnail.url}}" />
+            {% endif %}
+          </div>
+          <!-- 게시글 제목 -->
+          <div class="title">{{post.p_title}}</div>
+          <!-- 게시글 설명 -->
+          <div class="description">{{post.p_desc}}</div>
+          <!-- 게시글 게시 및 수정 날짜 -->
+          <div class="date">
+            {{post.p_created | date:'Y.m.d H:m'}} ・ UPDATED
+            {{post.p_updated|date:'Y.m.d H:m'}}
+          </div>
+          <!-- 게시글 내용 -->
+          <div class="post-detail">
+            <p>{{post.p_contents | linebreaksbr }}</p>
+          </div>
+        </div>
+
+        <!-- 댓글 작성 -->
+        <div class="comment-box">
+          <form method="POST">
+            {% csrf_token %}
+            <label>ID</label>
+            <input type="text" name="comment_id" />
+            <label>PW</label>
+            <input type="password" name="comment_pw" />
+            <textarea name="comment"></textarea>
+            <button type="submit">댓글 작성</button>
+          </form>
+          <ul class="comments">
+            {% for comment in post.comments_set.all %}
+            <li class="comment">{{ comment.c_contents }}</li>
+            {% empty %}
+            <li class="comment-empty">아직 댓글이 없습니다</li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
+      <!-- 하단바 공간 -->
+      <div class="footer">
+        <div class="head-title">
+          <i class="fa-solid fa-code"></i>
+          <a href="/">web.yonsei</a>
+        </div>
+        <p class="copyright">ⓒ 2023 Yonsei univ. All rights reserved</p>
+      </div>
+
+      <!-- 클릭시 맨 위로 이동 -->
+      <button class="go-first" onclick="window.scrollTo(0,0);">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
     </div>
-    <div class="comment-box">
-      <form method="POST">
-        {% csrf_token %}
-        <textarea name="comment"></textarea>
-        <label>ID</label>
-        <input type="text" name="comment_id" />
-        <label>PW</label>
-        <input type="password" name="comment_pw" />
-        <button type="submit">댓글 작성</button>
-      </form>
-      <ul class="comments">
-        {% for comment in post.comments_set.all %}
-        <li class="comment">{{ comment.c_contents }}</li>
-        {% empty %}
-        <li class="comment-empty">아직 댓글이 없습니다</li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="footer"></div>
   </body>
 </html>

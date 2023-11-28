@@ -8,7 +8,6 @@ from .models import User_Info
 
 # Create your views here.
 def main(request):
-    # post_list = Post.objects.order_by('-id')
     categorys = Category.objects.annotate(post_count=Count('post'))
     posts = Post.objects.annotate(comments_count=Count('comments')).order_by('-id')
 
@@ -25,13 +24,16 @@ def category(request, cate_name):
     for cate in category_list:
         if cate.cate_name.lower() == cate_name:
             category_id = cate.id
-    post_list = Post.objects.filter(cate_id=category_id).order_by('-id')
 
-    context = {'categorys' : categorys, 'post_list' : post_list, 'cate_name' : cate_name}
+    posts = Post.objects.filter(cate_id=category_id).annotate(comments_count=Count('comments')).order_by('-id')
+
+    context = {'categorys' : categorys, 'posts' : posts, 'cate_name' : cate_name}
     return render(request, 'mypage/category.html', context)
 
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
+    categorys = Category.objects.all()
+
     if request.method == "POST":
         comment_content = request.POST["comment"]
         comment_id = request.POST["comment_id"]
@@ -47,7 +49,7 @@ def post_detail(request, post_id):
         )
         print(post_id)
         
-    context = {'post' : post}
+    context = {'post' : post, 'categorys' : categorys}
     return render(request, 'mypage/detail.html', context)
 
 def post_write(request):

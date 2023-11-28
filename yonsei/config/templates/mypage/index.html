@@ -21,8 +21,7 @@
     <div class="container">
       <div class="header">
         <div class="head-logo">
-          <i class="fa-solid fa-code"></i>
-          <a href="/">web.yonsei</a>
+          <a href="/"> <i class="fa-solid fa-code"></i> web.yonsei</a>
         </div>
         <ul class="head-menu">
           <li><a href="/">HOME</a></li>
@@ -117,7 +116,7 @@
               <p class="content-description">{{ post.p_desc }}</p>
               <p class="comment-count">
                 <i class="fa-solid fa-message" style="color: #575757"></i>
-                {{post.comments_count }}
+                ・ {{post.comments_count }}
               </p>
             </div>
             {% if post.thumbnail %}
@@ -129,7 +128,13 @@
       </div>
 
       <!-- 하단바 공간 -->
-      <div class="footer"></div>
+      <div class="footer">
+        <div class="head-title">
+          <i class="fa-solid fa-code"></i>
+          <a href="/">web.yonsei</a>
+        </div>
+        <p class="copyright">ⓒ 2023 Yonsei univ. All rights reserved</p>
+      </div>
 
       <!-- 클릭시 맨 위로 이동 -->
       <button class="go-first" onclick="window.scrollTo(0,0);">
