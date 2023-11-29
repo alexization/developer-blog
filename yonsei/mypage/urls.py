@@ -14,4 +14,6 @@ urlpatterns = [
     # 위와 동일
     path('category/<str:cate_name>/', views.category, name='category'),
     path('modify/<int:post_id>/', views.modify, name="modify"),
+    path('delete/<int:post_id>/', views.delete, name="delete"),
+    path('comment/<int:comments_id>/', views.delete_comment, name="delete_comment"),
 ]

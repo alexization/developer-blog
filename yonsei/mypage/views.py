@@ -6,8 +6,6 @@ from .models import Post
 from .models import Comments
 from .models import User_Info
 
-# Create your views here.
-
 # index.html / 메인페이지
 def main(request):
     # categorys에 post_count 변수명으로 post의 개수 정보 추가
@@ -24,8 +22,10 @@ def login(request):
 
 def category(request, cate_name):
     categorys = Category.objects.annotate(post_count=Count('post'))
+
     # 카테고리를 눌렀을 때 해당 카테고리에 포함되어 있는 post만 출력시키는 기능을 위함
     for cate in categorys:
+        # cate_name이 소문자로 되어있기 때문에 lower()함수를 사용해 소문자로 변경해줌
         if cate.cate_name.lower() == cate_name:
             category_id = cate.id
     posts = Post.objects.filter(cate_id=category_id).annotate(comments_count=Count('comments')).order_by('-id')
@@ -65,13 +65,18 @@ def post_write(request):
 
     # 위와 동일
     if request.method == "POST":
-        
         cate = request.POST["categorys"]
         title = request.POST["title"]
         description = request.POST["description"]    
         content = request.POST["content"]
+
         # 썸네일 이미지 파일을 가져오기 위함
-        thumbnail = request.FILES["thumbnail"]
+        # 예외구문을 사용하지 않고 썸네일을 넣지 않는 경우 오류 발생
+        # 따라서 썸네일을 넣지 않는 경우에는 None을 입력
+        try:
+            thumbnail = request.FILES["thumbnail"]
+        except:
+            thumbnail = None
 
         post = Post.objects.create(
             cate_id = int(cate),
@@ -92,5 +97,53 @@ def about(request):
     return render(request, 'mypage/about.html')
 
 def modify(request, post_id):
+    post = Post.objects.get(id=post_id)
+    categorys = Category.objects.all()
+    
+    # 위와 동일
+    if request.method == "POST":
+        post.cate_id = request.POST["categorys"]
+        post.p_title = request.POST["title"]
+        post.p_desc = request.POST["description"]    
+        post.p_contents = request.POST["content"]
+        post.p_updated = timezone.now()
 
-    return render(request, 'mypage/modify.html', )
+        # 썸네일 이미지 파일을 가져오기 위함
+        # 이때 썸네일을 수정하지 않는 경우 기존의 썸네일을 가져가도록 하기 위함
+        try:
+            post.thumbnail = request.FILES["thumbnail"]
+        except:
+            post.thumbnail = post.thumbnail
+        # 포스트 내용 업데이트
+        post.save()
+        # redirect를 통해 게시글 작성을 완료하면 해당 post 상세페이지로 이동
+        return redirect(f"/posts/{post.id}")
+
+    context = {'post' : post, 'categorys' : categorys}
+    return render(request, 'mypage/modify.html', context)
+
+def delete(request, post_id):
+    # 해당 포스트에 대한 정보만 가져오기 위함
+    post = Post.objects.get(id=post_id)
+    # 해당 포스트 삭제
+    post.delete()
+    # 포스트를 삭제한 뒤 메인페이지로 이동
+    return redirect('/')
+
+def delete_comment(request, comments_id):
+    # 해당하는 댓글에 대한 정보만 가져오기 위함
+    comment = Comments.objects.get(id=comments_id)
+    
+    if request.method == "POST":
+        c_id = request.POST["c_id"]
+        c_pw = request.POST["c_pw"]
+
+        # 입력한 아이디와 비밀번호가 등록되어있는 아이디와 비밀번호가 동일한지 확인
+        # 만약 동일하다면 해당 댓글 삭제
+        if c_id == comment.c_user_id and c_pw == comment.c_user_pw:
+            comment.delete()
+
+        # 댓글을 삭제한 뒤, 댓글이 있었던 포스트로 이동
+        return redirect(f"/posts/{comment.p_id}")
+        
+    return render(request, 'mypage/comment_delete.html')
