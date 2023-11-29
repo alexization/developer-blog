@@ -16,6 +16,7 @@
     <script src="{% static 'js/main.js' %}" defer></script>
     <title>{{post.p_title}}</title>
   </head>
+
   <body>
     <div class="container">
       <div class="header">
@@ -151,6 +152,8 @@
                 <a href="/"><i class="fa-regular fa-rectangle-xmark"></i></a>
               </div>
             </li>
+
+            <!-- 댓글이 없는 경우 -->
             {% empty %}
             <li class="comment-empty">아직 댓글이 없습니다</li>
             {% endfor %}
