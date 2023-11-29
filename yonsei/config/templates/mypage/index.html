@@ -4,17 +4,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 아이콘 사용 -->
     <script
       src="https://kit.fontawesome.com/9ef1e52ac8.js"
       crossorigin="anonymous"
     ></script>
+    <!-- static 폴더내에 존재하는 index.css 파일 사용 -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
-      rel="stylesheet"
-    />
+
+    <!-- nav-bar 토글 사용을 위한 JS코드 사용 -->
     <script src="{% static 'js/main.js' %}" defer></script>
     <title>MyBlog</title>
   </head>
@@ -23,8 +21,7 @@
     <div class="container">
       <div class="header">
         <div class="head-logo">
-          <i class="fa-solid fa-code"></i>
-          <a href="/">codeblog</a>
+          <a href="/"> <i class="fa-solid fa-code"></i> web.yonsei</a>
         </div>
         <ul class="head-menu">
           <li><a href="/">HOME</a></li>
@@ -54,9 +51,11 @@
             >
           </li>
         </ul>
+
+        <!-- 1024px 미만의 경우 카테고리 목록이 nav-bar로 들어감 -->
         <div class="nav-sidebar">
           <div onclick="location.href='/';" class="category-box">ALL</div>
-          {% for category in category_list %}
+          {% for category in categorys %}
           <div
             onclick="location.href='/category/{{ category.cate_name | lower}}/';"
             class="category-box"
@@ -69,44 +68,75 @@
           <i class="fa-solid fa-bars"></i>
         </a>
       </div>
+
+      <!-- 글쓰기 버튼 공간 -->
       <div class="write-box">
         <button onclick="location.href='/write/';" class="write-button">
           글쓰기
         </button>
       </div>
+
+      <!-- 프로필 사진 / 카테고리 목록 / 게시글 목록 공간 -->
       <div class="middle">
         <div class="sidebar">
+          <!-- 프로필 사진 및 이름 -->
+          <div class="profile">
+            <div class="profile-img">
+              <img src="{% static 'image/profile.png' %}" />
+            </div>
+            <div class="profile-text">
+              <p class="team-title">웹프로그래밍</p>
+              <p class="team-semititle">9조</p>
+            </div>
+          </div>
+          <!-- 카테고리 목록 -->
           <div class="cate-title">카테고리 목록</div>
           <div onclick="location.href='/';" class="category-box">ALL</div>
-          {% for category in category_list %}
+          {% for category in categorys %}
           <div
             onclick="location.href='/category/{{ category.cate_name | lower}}/';"
             class="category-box"
           >
-            {{ category.cate_name }}
+            <div>{{ category.cate_name }}</div>
+            <div class="category-count">( {{ category.post_count }} )</div>
           </div>
           {% endfor %}
         </div>
+
+        <!-- 게시글 박스 -->
         <div class="content">
-          {% for post in post_list %}
+          {% for post in posts %}
           <div
             onclick="location.href='/posts/{{ post.id }}/';"
             class="post-box"
           >
             <div class="content-text">
-              <h1>{{ post.p_title }}</h1>
-              <h4>{{ post.p_desc }}</h4>
+              <p class="content-title">{{ post.p_title }}</p>
+              <p class="post-time">{{ post.p_created | date:'Y.m.d'}}</p>
+              <p class="content-description">{{ post.p_desc }}</p>
+              <p class="comment-count">
+                <i class="fa-solid fa-message" style="color: #575757"></i>
+                ・ {{post.comments_count }}
+              </p>
             </div>
             {% if post.thumbnail %}
             <img src="{{ post.thumbnail.url }}" alt="" />
-            {% else %}
-            <img src="" alt="" />
             {% endif %}
           </div>
           {% endfor%}
         </div>
       </div>
-      <div class="footer"></div>
+
+      <!-- 하단바 공간 -->
+      <div class="footer">
+        <div class="head-title">
+          <i class="fa-solid fa-code"></i>
+          <a href="/">web.yonsei</a>
+        </div>
+        <p class="copyright">ⓒ 2023 Yonsei univ. All rights reserved</p>
+      </div>
+
+      <!-- 클릭시 맨 위로 이동 -->
       <button class="go-first" onclick="window.scrollTo(0,0);">
         <i class="fa-solid fa-chevron-up"></i>
       </button>
