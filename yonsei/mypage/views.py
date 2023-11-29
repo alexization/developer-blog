@@ -53,8 +53,8 @@ def post_detail(request, post_id):
     return render(request, 'mypage/detail.html', context)
 
 def post_write(request):
-    category_list = Category.objects.all()
-    context = {'category_list' : category_list}
+    categorys = Category.objects.all()
+    context = {'categorys' : categorys}
 
     if request.method == "POST":
         
