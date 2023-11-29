@@ -90,3 +90,7 @@ def post_write(request):
 def about(request):
 
     return render(request, 'mypage/about.html')
+
+def modify(request, post_id):
+
+    return render(request, 'mypage/modify.html', )

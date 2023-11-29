@@ -1,9 +1,9 @@
 {% extends "./base.html" %}
 {% load static %}
-{% block write %}
+{% block modify %}
 
   <!-- static 폴더내에 존재하는 index.css 파일 사용 -->
-  <link rel="stylesheet" href="{% static 'css/write.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/modify.css' %}"/>
 
   <!-- 게시글 작성 박스 -->
   <form method="POST" enctype="multipart/form-data" class="post-box">
@@ -12,8 +12,8 @@
     <!-- 작성 버튼 공간 -->
     <div class="button-box">
       <div></div>
-      <div>새로운 게시글 작성하기</div>
-      <button type="submit" class="write-button">글쓰기</button>
+      <div>게시글 수정하기</div>
+      <button type="submit" class="write-button">수정하기</button>
     </div>
 
     <!-- 제목 / 설명 / 내용 -->
