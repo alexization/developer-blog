@@ -4,7 +4,6 @@ from django.utils import timezone
 from .models import Category
 from .models import Post
 from .models import Comments
-from .models import User_Info
 
 # index.html / 메인페이지
 def main(request):
