@@ -51,9 +51,15 @@
             </a>
           </li>
           <li>
-            <a href="/login">
-              <i class="fa-solid fa-arrow-right-to-bracket"></i>
-              Login</a>
+            {% if user.is_active %}
+              <a href="/logout">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                Logout</a>
+            {% else %}
+              <a href="/login">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                Login</a>
+            {% endif %}
           </li>
         </ul>
 

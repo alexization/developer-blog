@@ -9,8 +9,8 @@
   <form method="POST" class="input-box">
     {% csrf_token %}
     <div class="input-info">
-      <input type="text" name="c_id" placeholder="아이디">
-      <input type="password" name="c_pw" placeholder="비밀번호"/>
+      <input type="text" name="c_id" placeholder="아이디" required="required">
+      <input type="password" name="c_pw" placeholder="비밀번호" / required="required">
     </div>
     <button type="submit" class="button-box">확인</button>
   </form>

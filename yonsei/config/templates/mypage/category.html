@@ -7,9 +7,11 @@
 
   <!-- 글쓰기 버튼 공간 -->
   <div class="write-box">
-    <button onclick="location.href='/write/';" class="write-button">
-      글쓰기
-    </button>
+    {% if user.is_active %}
+      <button onclick="location.href='/write/';" class="write-button">
+        글쓰기
+      </button>
+    {% endif %}
   </div>
 
   <!-- 프로필 사진 / 카테고리 목록 / 게시글 목록 공간 -->

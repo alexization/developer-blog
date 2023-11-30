@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
 from django.utils import timezone
+from django.contrib.auth import authenticate, login, logout
 from .models import Category
 from .models import Post
 from .models import Comments
@@ -15,10 +16,27 @@ def main(request):
     context = {'categorys': categorys, 'posts' : posts}
     return render(request, 'mypage/index.html', context)
 
-def login(request):
+def login_view(request):
     
+    if request.method == "POST":
+        username = request.POST['u_id']
+        password = request.POST['u_pw']
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            login(request, user)
+            return redirect('/')
+        else:
+            print("login failed")
 
     return render(request, 'mypage/login.html')
+
+def logout_view(request):
+
+    logout(request)
+
+    return redirect('/')
 
 def category(request, cate_name):
     categorys = Category.objects.annotate(post_count=Count('post'))
