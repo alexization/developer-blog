@@ -17,6 +17,7 @@ def main(request):
     return render(request, 'mypage/index.html', context)
 
 def login(request):
+    
 
     return render(request, 'mypage/login.html')
 
