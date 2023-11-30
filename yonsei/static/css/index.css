@@ -155,7 +155,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 200px;
+  height: 250px;
   width: 100%;
   cursor: pointer;
   margin-bottom: 20px;
@@ -172,6 +172,7 @@ a {
 .content-text {
   display: flex;
   flex-direction: column;
+  padding-right: 20px;
 }
 .content-title {
   font-family: "IBM Plex Sans KR", sans-serif;

@@ -1,14 +1,13 @@
 from django.contrib import admin
-from .models import User_Info
+from django.contrib.auth.admin import UserAdmin
+from .models import User
 from .models import Post
 from .models import Category
 from .models import Comments
 
 # Register your models here.
+admin.site.register(User, UserAdmin)
 
-@admin.register(User_Info)
-class User_InfoAdmin(admin.ModelAdmin):
-    pass
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ["p_title", "thumbnail"]

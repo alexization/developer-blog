@@ -1,13 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
 
-class User_Info(models.Model):
-    u_id = models.CharField(max_length=20)
-    u_pw = models.CharField(max_length=20)
-    u_name = models.CharField(max_length=10)
-    u_school = models.CharField(max_length=20)
+class User(AbstractUser):
+    pass
 
 class Category(models.Model):
     cate_name = models.CharField(max_length=50)

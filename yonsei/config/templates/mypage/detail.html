@@ -32,16 +32,18 @@
     </div>
 
     <!-- 수정 / 삭제 버튼 -->
-    <div class="button-box">
-      <a href="/modify/{{post.id}}" class="modify">
-        <i class="fa-solid fa-file-pen"></i>
-        수정하기</a>
+    {% if user.is_active %}
+      <div class="button-box">
+        <a href="/modify/{{post.id}}" class="modify">
+          <i class="fa-solid fa-file-pen"></i>
+          수정하기</a>
 
-      <!-- 삭제는 따로 html 파일을 제작하지 않고 팝업창으로 확인 -->
-      <a href="/delete/{{post.id}}" class="delete" onclick="return confirm('정말 삭제하시겠습니까?');">
-        <i class="fa-solid fa-trash-can"></i>
-        삭제하기</a>
-    </div>
+        <!-- 삭제는 따로 html 파일을 제작하지 않고 팝업창으로 확인 -->
+        <a href="/delete/{{post.id}}" class="delete" onclick="return confirm('정말 삭제하시겠습니까?');">
+          <i class="fa-solid fa-trash-can"></i>
+          삭제하기</a>
+      </div>
+    {% endif %}
 
     <!-- 댓글 작성 -->
     <div class="comment-box">
@@ -53,13 +55,13 @@
 
         <!-- 아이디 / 비밀번호 입력 -->
         <div class="input-info">
-          <input type="text" name="comment_id" placeholder="아이디" style="outline: none"/>
-          <input type="password" name="comment_pw" placeholder="비밀번호" style="outline: none"/>
+          <input type="text" name="comment_id" placeholder="아이디" style="outline: none" required="required"/>
+          <input type="password" name="comment_pw" placeholder="비밀번호" style="outline: none" required="required"/>
         </div>
 
         <!-- 댓글 내용 / 버튼 -->
         <div class="input-comment">
-          <textarea name="comment" placeholder="댓글을 입력해주세요." style="outline: none"></textarea>
+          <textarea name="comment" placeholder="댓글을 입력해주세요." style="outline: none" required="required"></textarea>
           <button type="submit">댓글<br/>작성</button>
         </div>
       </form>

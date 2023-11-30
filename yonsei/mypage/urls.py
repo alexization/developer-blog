@@ -5,7 +5,8 @@ app_name = 'mypage'
 
 urlpatterns = [
     path('', views.main, name='main'),
-    path('login/', views.login, name='login'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('write/', views.post_write, name='write'),
     path('about/', views.about, name="about"),
     # views.post_detail를 통해 가져온 post_id 정보를 바탕으로 url 구성
