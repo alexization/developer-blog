@@ -28,18 +28,27 @@
 
       <!-- 카테고리 목록 -->
       <div class="cate-title">
-        <div>카테고리 목록</div>
+        <div>
+          <i class="fa-solid fa-bars-staggered"></i>
+          카테고리 목록</div>
         {% if user.is_active %}
           <a href="/option/" class="cate-add" style="font-size:15px">
             <i class="fa-solid fa-gear"></i>
           </a>
         {% endif %}
       </div>
-      <div onclick="location.href='/';" class="category-box">ALL</div>
+      <div onclick="location.href='/';" class="category-box">
+        <div style="padding-left:20px">ALL</div>
+        <div class="category-count">
+          (
+          {{ all_post }}
+          )</div>
+      </div>
       {% for category in categorys %}
         <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="category-box">
-          <div>{{ category.cate_name }}</div>
-          <div class="category-count">(
+          <div style="padding-left:20px">{{ category.cate_name }}</div>
+          <div class="category-count">
+            (
             {{ category.post_count }}
             )</div>
         </div>
@@ -52,16 +61,19 @@
         <div onclick="location.href='/posts/{{ post.id }}/';" class="post-box">
           <div class="content-text">
             <p class="content-title">{{ post.p_title }}</p>
-            <p class="post-time">{{ post.p_created | date:'Y.m.d'}}
-              ・
-              {{ post.category_title }}
-            </p>
+            <div class="sub-detail">
+              <p>
+                <i class="fa-solid fa-bookmark"></i>
+                {{ post.category_title }}</p>
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                {{ post.p_created | date:'Y.m.d'}}</p>
+              <p>
+                <i class="fa-regular fa-comment-dots"></i>
+                댓글
+                {{post.comments_count }}건</p>
+            </div>
             <p class="content-description">{{ post.p_desc }}</p>
-            <p class="comment-count">
-              <i class="fa-solid fa-message" style="color: #575757"></i>
-              ・
-              {{post.comments_count }}
-            </p>
           </div>
           {% if post.thumbnail %}
             <img src="{{ post.thumbnail.url }}" alt=""/>

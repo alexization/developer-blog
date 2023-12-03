@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 
 # https://velog.io/@may_soouu/%EC%9E%A5%EA%B3%A0-Annotate-Aggregate 
-from django.db.models import Count, F
+from django.db.models import Count, F, Value
+from django.db.models.functions import Lower
 
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
@@ -16,8 +17,12 @@ def main(request):
     # posts에 comments_count 변수명으로 comment의 개수 정보 추가 + 역순으로 출력시켜 최신순으로 보이도록 함
     # category_title에 외래키 정보인 category 테이블의 cate_name 정보를 category_title에 입력시켜 줌
     posts = Post.objects.annotate(comments_count=Count('comments'), category_title=F('cate__cate_name')).order_by('-id')
+    all_post = 0
 
-    context = {'categorys': categorys, 'posts' : posts}
+    for category in categorys:
+        all_post += category.post_count
+    
+    context = {'categorys': categorys, 'posts' : posts, 'all_post' : all_post}
     return render(request, 'mypage/index.html', context)
 
 def login_view(request):
@@ -43,21 +48,26 @@ def logout_view(request):
     return redirect('/')
 
 def category(request, cate_name):
-    categorys = Category.objects.annotate(post_count=Count('post')).order_by('cate_name')
+    categorys = Category.objects.annotate(post_count=Count('post'), lower_name=Lower('cate_name')).order_by('cate_name')
 
     # 카테고리를 눌렀을 때 해당 카테고리에 포함되어 있는 post만 출력시키는 기능을 위함
     for cate in categorys:
         # cate_name이 소문자로 되어있기 때문에 lower()함수를 사용해 소문자로 변경해줌
         if cate.cate_name.lower() == cate_name:
             category_id = cate.id
+            
     posts = Post.objects.filter(cate_id=category_id).annotate(comments_count=Count('comments'), category_title=F('cate__cate_name')).order_by('-id')
+    
+    all_post = 0
+    for category in categorys:
+        all_post += category.post_count
 
-    context = {'categorys' : categorys, 'posts' : posts, 'cate_name' : cate_name}
+    context = {'categorys' : categorys, 'posts' : posts, 'cate_name' : cate_name, 'all_post' : all_post}
     return render(request, 'mypage/category.html', context)
 
 def post_detail(request, post_id):
     # 특정 post를 클릭했을 때 해당 Post의 상세 페이지로 이동시키기 위함
-    post = Post.objects.get(id=post_id)
+    post = Post.objects.annotate(category_title=F('cate__cate_name')).get(id=post_id)
     categorys = Category.objects.all()
 
     # 만약 POST method를 요청했을 때 수행되는 구문
