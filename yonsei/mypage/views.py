@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
-from django.db.models import Count
+
+# https://velog.io/@may_soouu/%EC%9E%A5%EA%B3%A0-Annotate-Aggregate 
+from django.db.models import Count, F
+
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from .models import Category
@@ -9,9 +12,10 @@ from .models import Comments
 # index.html / 메인페이지
 def main(request):
     # categorys에 post_count 변수명으로 post의 개수 정보 추가
-    categorys = Category.objects.annotate(post_count=Count('post'))
+    categorys = Category.objects.annotate(post_count=Count('post')).order_by('cate_name')
     # posts에 comments_count 변수명으로 comment의 개수 정보 추가 + 역순으로 출력시켜 최신순으로 보이도록 함
-    posts = Post.objects.annotate(comments_count=Count('comments')).order_by('-id')
+    # category_title에 외래키 정보인 category 테이블의 cate_name 정보를 category_title에 입력시켜 줌
+    posts = Post.objects.annotate(comments_count=Count('comments'), category_title=F('cate__cate_name')).order_by('-id')
 
     context = {'categorys': categorys, 'posts' : posts}
     return render(request, 'mypage/index.html', context)
@@ -39,14 +43,14 @@ def logout_view(request):
     return redirect('/')
 
 def category(request, cate_name):
-    categorys = Category.objects.annotate(post_count=Count('post'))
+    categorys = Category.objects.annotate(post_count=Count('post')).order_by('cate_name')
 
     # 카테고리를 눌렀을 때 해당 카테고리에 포함되어 있는 post만 출력시키는 기능을 위함
     for cate in categorys:
         # cate_name이 소문자로 되어있기 때문에 lower()함수를 사용해 소문자로 변경해줌
         if cate.cate_name.lower() == cate_name:
             category_id = cate.id
-    posts = Post.objects.filter(cate_id=category_id).annotate(comments_count=Count('comments')).order_by('-id')
+    posts = Post.objects.filter(cate_id=category_id).annotate(comments_count=Count('comments'), category_title=F('cate__cate_name')).order_by('-id')
 
     context = {'categorys' : categorys, 'posts' : posts, 'cate_name' : cate_name}
     return render(request, 'mypage/category.html', context)
@@ -165,3 +169,7 @@ def delete_comment(request, comments_id):
         return redirect(f"/posts/{comment.p_id}")
         
     return render(request, 'mypage/comment_delete.html')
+
+def category_option(request):
+
+    return render(request, "mypage/category_option.html")

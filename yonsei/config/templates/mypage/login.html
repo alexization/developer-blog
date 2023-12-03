@@ -2,9 +2,10 @@
 {% load static %}
 {% block login %}
 
-  <!-- static 폴더내에 존재하는 index.css 파일 사용 -->
+  <!-- static 폴더내에 존재하는 comment.css 파일 사용 -->
   <link rel="stylesheet" href="{% static 'css/comment.css' %}"/>
 
+  <div class="description">관리자 로그인</div>
   <form method="POST" class="input-box">
     {% csrf_token %}
     <div class="input-info">
