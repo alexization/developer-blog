@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
 
 /* PC version CSS */
 body {
@@ -55,19 +56,19 @@ a {
   display: none;
   width: 100%;
 }
-.category-box {
+.nav-category-box {
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   height: 50px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
   color: black;
   transition: 0.5s;
 }
-.category-box:hover {
+.nav-category-box:hover {
   color: #4169e1;
 }
 .footer {

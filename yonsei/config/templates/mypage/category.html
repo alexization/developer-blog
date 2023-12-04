@@ -28,21 +28,45 @@
 
       <!-- 카테고리 목록 -->
       <div class="cate-title">
-        <div>카테고리 목록</div>
+        <div>
+          <i class="fa-solid fa-bars-staggered"></i>
+          카테고리 목록</div>
+        <!-- 로그인이 되어있을 경우 카테고리 추가/삭제 페이지로 갈 수 있는 버튼 추가 -->
         {% if user.is_active %}
           <a href="/option/" class="cate-add" style="font-size:15px">
             <i class="fa-solid fa-gear"></i>
           </a>
         {% endif %}
       </div>
-      <div onclick="location.href='/';" class="category-box">ALL</div>
+      <div onclick="location.href='/';" class="category-box">
+        <div style="padding-left:20px">전체보기</div>
+        <div class="category-count">
+          (
+          {{ all_post }}
+          )</div>
+      </div>
       {% for category in categorys %}
-        <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="category-box">
-          <div>{{ category.cate_name }}</div>
-          <div class="category-count">(
-            {{ category.post_count }}
-            )</div>
-        </div>
+
+        <!-- 선택한 카테고리는 색을 변경 -->
+        <!-- index.html과 유일하게 다른 코드 -->
+        {% if cate_name == category.lower_name %}
+          <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="category-box">
+            <div style="padding-left:20px; color:#4169e1">{{ category.cate_name }}</div>
+            <div class="category-count">
+              (
+              {{ category.post_count }}
+              )</div>
+          </div>
+
+        {% else %}
+          <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="category-box">
+            <div style="padding-left:20px">{{ category.cate_name }}</div>
+            <div class="category-count">
+              (
+              {{ category.post_count }}
+              )</div>
+          </div>
+        {% endif %}
       {% endfor %}
     </div>
 
@@ -52,16 +76,19 @@
         <div onclick="location.href='/posts/{{ post.id }}/';" class="post-box">
           <div class="content-text">
             <p class="content-title">{{ post.p_title }}</p>
-            <p class="post-time">{{ post.p_created | date:'Y.m.d'}}
-              ・
-              {{ post.category_title }}
-            </p>
+            <div class="sub-detail">
+              <p>
+                <i class="fa-solid fa-bookmark"></i>
+                {{ post.category_title }}</p>
+              <p>
+                <i class="fa-regular fa-calendar"></i>
+                {{ post.p_created | date:'Y.m.d'}}</p>
+              <p>
+                <i class="fa-regular fa-comment-dots"></i>
+                댓글
+                {{post.comments_count }}건</p>
+            </div>
             <p class="content-description">{{ post.p_desc }}</p>
-            <p class="comment-count">
-              <i class="fa-solid fa-message" style="color: #575757"></i>
-              ・
-              {{post.comments_count }}
-            </p>
           </div>
           {% if post.thumbnail %}
             <img src="{{ post.thumbnail.url }}" alt=""/>

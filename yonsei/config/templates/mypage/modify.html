@@ -17,9 +17,9 @@
     </div>
 
     <!-- 제목 / 설명 / 내용 -->
-    <input type="text" name="title" value="{{ post.p_title }}">
-    <input type="text" name="description" value="{{ post.p_desc }}"/>
-    <textarea name="content" cols="50" rows="10">{{post.p_contents}}</textarea>
+    <input type="text" name="title" placeholder="게시글 제목" value="{{ post.p_title }}" required="required">
+    <input type="text" name="description" placeholder="게시글 설명 • 게시글에 대한 간단한 요약" value="{{ post.p_desc }}" required="required"/>
+    <textarea name="content" cols="50" rows="10" placeholder="내용을 입력해주세요.">{{post.p_contents}}</textarea>
 
     <!-- 카테고리 선택 -->
     <label for="category" style="height: 50px">카테고리

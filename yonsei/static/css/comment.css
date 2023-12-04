@@ -22,10 +22,11 @@
   height: 25px;
   font-family: "IBM Plex Sans KR", sans-serif;
 }
-.input-box button {
+.button-box {
   border: 1px solid #c9c9c9;
   height: 30px;
   width: 60px;
   font-family: "IBM Plex Sans KR", sans-serif;
   margin-left: 20px;
+  cursor: pointer;
 }
