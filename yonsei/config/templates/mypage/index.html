@@ -31,6 +31,7 @@
         <div>
           <i class="fa-solid fa-bars-staggered"></i>
           카테고리 목록</div>
+        <!-- 로그인이 되어있을 경우 카테고리 추가/삭제 페이지로 갈 수 있는 버튼 추가 -->
         {% if user.is_active %}
           <a href="/option/" class="cate-add" style="font-size:15px">
             <i class="fa-solid fa-gear"></i>

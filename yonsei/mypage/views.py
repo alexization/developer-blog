@@ -132,7 +132,7 @@ def post_write(request):
     
     return render(request, 'mypage/write.html', context)
 
-
+# modify.html / 포스트 수정 페이지
 def modify(request, post_id):
     post = Post.objects.get(id=post_id)
     categorys = Category.objects.all()
@@ -159,6 +159,7 @@ def modify(request, post_id):
     context = {'post' : post, 'categorys' : categorys}
     return render(request, 'mypage/modify.html', context)
 
+# 포스트 삭제
 def delete(request, post_id):
     # 해당 포스트에 대한 정보만 가져오기 위함
     post = Post.objects.get(id=post_id)
@@ -167,6 +168,7 @@ def delete(request, post_id):
     # 포스트를 삭제한 뒤 메인페이지로 이동
     return redirect('/')
 
+# 댓글 삭제
 def delete_comment(request, comments_id):
     # 해당하는 댓글에 대한 정보만 가져오기 위함
     comment = Comments.objects.get(id=comments_id)
@@ -186,8 +188,10 @@ def delete_comment(request, comments_id):
     return render(request, 'mypage/comment_delete.html')
 
 def category_option(request):
+    categorys = Category.objects.all().order_by('cate_name')
 
-    return render(request, "mypage/category_option.html")
+    context = {'categorys' : categorys}
+    return render(request, "mypage/category_option.html", context)
 
 def about(request):
 
