@@ -93,7 +93,6 @@ def post_detail(request, post_id):
             c_created = timezone.now(),
             c_updated = timezone.now()
         )
-        print(post_id)
         
     context = {'post' : post, 'categorys' : categorys}
     return render(request, 'mypage/detail.html', context)
@@ -190,8 +189,32 @@ def delete_comment(request, comments_id):
 def category_option(request):
     categorys = Category.objects.all().order_by('cate_name')
 
+    if request.method == "POST":
+        category_name = request.POST['cate_name']
+
+        Category.objects.create(
+            cate_name = category_name
+        )
+
     context = {'categorys' : categorys}
     return render(request, "mypage/category_option.html", context)
+
+def category_delete(request, category_id):
+    category = Category.objects.get(id=category_id)
+    category.delete()
+    return redirect('/option')
+
+def category_modify(request, category_id):
+    category = Category.objects.get(id=category_id)
+    context = {'category' : category}
+
+    if request.method == "POST":
+        category.cate_name = request.POST['cate_name']
+
+        category.save()
+        return redirect('/option')
+    
+    return render(request, 'mypage/category_modify.html', context)
 
 def about(request):
 
