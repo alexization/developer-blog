@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 # https://velog.io/@may_soouu/%EC%9E%A5%EA%B3%A0-Annotate-Aggregate 
-from django.db.models import Count, F, Value
+from django.db.models import Count, F
 from django.db.models.functions import Lower
 
 from django.utils import timezone
@@ -17,37 +17,18 @@ def main(request):
     # posts에 comments_count 변수명으로 comment의 개수 정보 추가 + 역순으로 출력시켜 최신순으로 보이도록 함
     # category_title에 외래키 정보인 category 테이블의 cate_name 정보를 category_title에 입력시켜 줌
     posts = Post.objects.annotate(comments_count=Count('comments'), category_title=F('cate__cate_name')).order_by('-id')
+    
+    # 전체 포스트의 개수를 세기 위한 all_post 변수
     all_post = 0
-
     for category in categorys:
         all_post += category.post_count
     
     context = {'categorys': categorys, 'posts' : posts, 'all_post' : all_post}
     return render(request, 'mypage/index.html', context)
 
-def login_view(request):
-    
-    if request.method == "POST":
-        username = request.POST['u_id']
-        password = request.POST['u_pw']
-
-        user = authenticate(username=username, password=password)
-
-        if user:
-            login(request, user)
-            return redirect('/')
-        else:
-            print("login failed")
-
-    return render(request, 'mypage/login.html')
-
-def logout_view(request):
-
-    logout(request)
-
-    return redirect('/')
-
+# category.html / 카테고리 선택 페이지
 def category(request, cate_name):
+    # lower_name 변수에 Category 테이블의 cate_name 데이터를 모두 소문자화시켜 넣어줌
     categorys = Category.objects.annotate(post_count=Count('post'), lower_name=Lower('cate_name')).order_by('cate_name')
 
     # 카테고리를 눌렀을 때 해당 카테고리에 포함되어 있는 post만 출력시키는 기능을 위함
@@ -65,6 +46,32 @@ def category(request, cate_name):
     context = {'categorys' : categorys, 'posts' : posts, 'cate_name' : cate_name, 'all_post' : all_post}
     return render(request, 'mypage/category.html', context)
 
+# login.html / 로그인 페이지
+def login_view(request):
+    
+    if request.method == "POST":
+        username = request.POST['u_id']
+        password = request.POST['u_pw']
+
+        # username과 password가 일치한지 확인
+        user = authenticate(username=username, password=password)
+
+        if user:
+            login(request, user)
+            return redirect('/')
+        else:
+            print("login failed")
+
+    return render(request, 'mypage/login.html')
+
+# 로그아웃은 따로 페이지가 필요없음
+def logout_view(request):
+
+    logout(request)
+
+    return redirect('/')
+
+# detail.html / 포스트 상세 페이지
 def post_detail(request, post_id):
     # 특정 post를 클릭했을 때 해당 Post의 상세 페이지로 이동시키기 위함
     post = Post.objects.annotate(category_title=F('cate__cate_name')).get(id=post_id)
@@ -91,6 +98,7 @@ def post_detail(request, post_id):
     context = {'post' : post, 'categorys' : categorys}
     return render(request, 'mypage/detail.html', context)
 
+# write.html / 포스트 작성 페이지
 def post_write(request):
     categorys = Category.objects.all()
     context = {'categorys' : categorys}
@@ -124,9 +132,6 @@ def post_write(request):
     
     return render(request, 'mypage/write.html', context)
 
-def about(request):
-
-    return render(request, 'mypage/about.html')
 
 def modify(request, post_id):
     post = Post.objects.get(id=post_id)
@@ -183,3 +188,7 @@ def delete_comment(request, comments_id):
 def category_option(request):
 
     return render(request, "mypage/category_option.html")
+
+def about(request):
+
+    return render(request, 'mypage/about.html')
