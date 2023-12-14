@@ -29,7 +29,8 @@ SECRET_KEY = 't$v^rgzra9nbogauxb+2i^(9ptw=41b#ebcl5wz+wuay4)kh@9'
 DEBUG = True
 
 ALLOWED_HOSTS = ['43.203.41.50',
-                 '.hyodev.kr']
+                 '.hyodev.kr',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -123,9 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    # BASE_DIR / 'static',
+    BASE_DIR / 'static',
 ]
 
 MEDIA_URL = "/media/"
