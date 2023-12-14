@@ -68,6 +68,7 @@ a {
   align-items: center;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
+  font-size: 1.6rem;
   color: black;
   transition: 0.5s;
 }
@@ -151,5 +152,11 @@ a {
 @media screen and (max-width: 767px) {
   html {
     font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  html {
+    font-size: 7px;
   }
 }
