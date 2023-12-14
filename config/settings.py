@@ -28,7 +28,8 @@ SECRET_KEY = 't$v^rgzra9nbogauxb+2i^(9ptw=41b#ebcl5wz+wuay4)kh@9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['43.203.41.50']
+ALLOWED_HOSTS = ['43.203.41.50',
+                 '.hyodev.kr']
 
 
 # Application definition
