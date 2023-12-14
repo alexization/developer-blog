@@ -4,5 +4,10 @@ venv
 # mac
 .DS_store
 
-# VScode
-yonsei.code-workspace
+#Django
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
