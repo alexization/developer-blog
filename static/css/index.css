@@ -58,12 +58,12 @@
 .team-title {
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 2rem;
   margin-bottom: 0px;
 }
 .team-semititle {
   font-family: "Nanum Gothic", sans-serif;
-  font-size: 18px;
+  font-size: 1.5rem;
   color: rgb(121, 121, 121);
 }
 .cate-title {
@@ -72,6 +72,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   height: 30px;
   width: 100%;
+  font-size: 1.6rem;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
@@ -88,7 +89,7 @@
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.8rem;
   color: black;
   transition: 0.3s;
   column-gap: 15px;
@@ -98,7 +99,7 @@
 }
 .category-count {
   font-family: "Kanit", sans-serif;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 .category-box:hover {
   color: white;
@@ -129,7 +130,6 @@
 .post-box img {
   width: 150px;
   height: 150px;
-  margin-right: 20px;
   object-fit: contain;
 }
 .content-text {
@@ -140,7 +140,7 @@
 .content-title {
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 2.8rem;
   margin-bottom: 0;
 }
 .sub-detail {
@@ -154,10 +154,12 @@
   height: 30px;
   margin-top: 5px;
   padding-left: 3px;
+  font-size: 1.3rem;
 }
 .content-description {
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 400;
+  font-size: 1.6rem;
   color: black;
 }
 
