@@ -7,7 +7,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 2.4rem;
   text-align: center;
 }
 .input-box {
@@ -21,12 +21,14 @@
   border: 1px solid #c9c9c9;
   height: 25px;
   font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 1.6rem;
 }
 .button-box {
   border: 1px solid #c9c9c9;
   height: 30px;
   width: 60px;
   font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 1.6rem;
   margin-left: 20px;
   cursor: pointer;
 }

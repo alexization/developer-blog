@@ -6,6 +6,7 @@
   margin: auto;
   margin-top: 50px;
   font-family: "Nanum Gothic", sans-serif;
+  font-size: 1.6rem;
 }
 .button-box {
   width: 100%;
@@ -16,7 +17,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 2.4rem;
 }
 .write-button {
   width: 100px;
@@ -26,6 +27,7 @@
   background: none;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
+  font-size: 1.6rem;
   color: rgba(0, 0, 0, 0.6);
 }
 .post-box input[type="text"] {
@@ -33,7 +35,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   outline: none;
   font-family: "IBM Plex Sans KR", sans-serif;
-  font-size: 18px;
+  font-size: 1.8rem;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -42,6 +44,6 @@
   resize: none;
   border: none;
   font-family: "IBM Plex Sans KR", sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   margin-bottom: 30px;
 }
