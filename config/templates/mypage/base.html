@@ -29,59 +29,61 @@
   <body>
     <div class="container">
       <!-- 헤더 -->
-      <div class="header">
-        <div class="head-logo">
-          <a href="/">
-            <i class="fa-solid fa-code"></i>
-            hyodev</a>
-        </div>
-        <ul class="head-menu">
-          <li>
-            <a href="/">HOME</a>
-          </li>
-          <li>
-            <a href="/about">ABOUT</a>
-          </li>
-          <li>
-            <a target="_blank" href="mailto:alexization@naver.com?subject=contact e-mail">CONTACT</a>
-          </li>
-        </ul>
-        <ul class="head-link">
-          <li>
-            <a href="https://www.instagram.com" target="_blank">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.github.com/alexization" target="_blank">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </li>
-          <li>
-            {% if user.is_active %}
-              <a href="/logout">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Logout</a>
-            {% else %}
-              <a href="/login">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                Login</a>
-            {% endif %}
-          </li>
-        </ul>
+      <div class="header-background">
+        <div class="header">
+          <div class="head-logo">
+            <a href="/">
+              <i class="fa-solid fa-code"></i>
+              hyodev</a>
+          </div>
+          <ul class="head-menu">
+            <li>
+              <a href="/">HOME</a>
+            </li>
+            <li>
+              <a href="/about">ABOUT</a>
+            </li>
+            <li>
+              <a target="_blank" href="mailto:alexization@naver.com?subject=contact e-mail">CONTACT</a>
+            </li>
+          </ul>
+          <ul class="head-link">
+            <li>
+              <a href="https://www.instagram.com" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.github.com/alexization" target="_blank">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </li>
+            <li>
+              {% if user.is_active %}
+                <a href="/logout">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  Logout</a>
+              {% else %}
+                <a href="/login">
+                  <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                  Login</a>
+              {% endif %}
+            </li>
+          </ul>
 
-        <!-- 1024px 미만의 경우 카테고리 목록이 nav-bar로 들어감 -->
-        <div class="nav-sidebar">
-          <div onclick="location.href='/';" class="nav-category-box">ALL</div>
-          {% for category in categorys %}
-            <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="nav-category-box">
-              {{ category.cate_name }}
-            </div>
-          {% endfor %}
+          <!-- 1024px 미만의 경우 카테고리 목록이 nav-bar로 들어감 -->
+          <div class="nav-sidebar">
+            <div onclick="location.href='/';" class="nav-category-box">ALL</div>
+            {% for category in categorys %}
+              <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="nav-category-box">
+                {{ category.cate_name }}
+              </div>
+            {% endfor %}
+          </div>
+          <a href="#" class="navbar_toggleBtn">
+            <i class="fa-solid fa-bars"></i>
+          </a>
         </div>
-        <a href="#" class="navbar_toggleBtn">
-          <i class="fa-solid fa-bars"></i>
-        </a>
       </div>
 
       {% block index %}{% endblock %}
@@ -100,7 +102,7 @@
           <i class="fa-solid fa-code"></i>
           <a href="/">hyodev</a>
         </div>
-        <p class="copyright">ⓒ 2023 Baek Hyo Seok. All rights reserved</p>
+        <p class="copyright">© 2023 Hyo Seok, Baek. All rights reserved</p>
       </div>
 
       <!-- 클릭시 맨 위로 이동 -->
