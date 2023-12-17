@@ -108,7 +108,7 @@
 }
 .category-box:hover {
   color: white;
-  background-color: #87a5ffbc;
+  background-color: #ce733890;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 .content {
@@ -129,7 +129,7 @@
   transition: 0.5s;
 }
 .post-box:hover {
-  color: #4169e1;
+  color: #9c5d47;
 }
 .post-box img {
   width: 150px;

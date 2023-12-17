@@ -39,7 +39,7 @@ a {
   color: black;
 }
 .header a:hover {
-  color: #4169e1;
+  color: #9c5d47;
 }
 .head-menu {
   display: flex;
@@ -81,7 +81,7 @@ a {
   transition: 0.5s;
 }
 .nav-category-box:hover {
-  color: #4169e1;
+  color: #9c5d47;
 }
 .footer {
   width: 100%;
@@ -120,7 +120,7 @@ a {
   transition: 0.5s;
 }
 .go-first:hover {
-  background-color: #4169e1;
+  background-color: #9c5d47;
   color: white;
 }
 /* Tablet and Mobile version CSS */
@@ -130,10 +130,9 @@ a {
   }
   .header {
     flex-direction: column;
-    height: 57px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
-    justify-content: center;
-    padding-left: 20px;
     align-items: flex-start;
   }
   .header a {
