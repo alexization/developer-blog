@@ -2,6 +2,9 @@
   width: 100%;
   height: 50px;
   margin-top: 80px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -12,17 +15,15 @@
   border-radius: 40px;
   border: 1px rgba(0, 0, 0, 0.4) solid;
   background: none;
-  margin-right: 30px;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.6);
 }
 .middle {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -62,12 +63,12 @@
 .team-title {
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 0px;
 }
 .team-semititle {
   font-family: "Nanum Gothic", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: rgb(121, 121, 121);
 }
 .cate-title {
@@ -76,7 +77,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   height: 30px;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
@@ -85,7 +86,7 @@
 }
 .category-box {
   border: none;
-  height: 60px;
+  height: 50px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -93,7 +94,7 @@
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 400;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: black;
   transition: 0.3s;
   column-gap: 15px;
@@ -103,7 +104,7 @@
 }
 .category-count {
   font-family: "Kanit", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 .category-box:hover {
   color: white;
@@ -118,7 +119,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 270px;
+  height: 180px;
   width: 100%;
   cursor: pointer;
   margin-bottom: 20px;
@@ -143,13 +144,14 @@
 .content-title {
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-bottom: 0;
+  margin-top: 0;
 }
 .sub-detail {
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 200;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin: 0;
   color: #868e96;
   display: flex;
@@ -162,7 +164,7 @@
 .content-description {
   font-family: "IBM Plex Sans KR", sans-serif;
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: black;
 }
 
@@ -174,12 +176,16 @@
   }
   .post-box {
     flex-direction: column-reverse;
+    height: 270px;
   }
   .sidebar {
     display: none;
   }
   .content {
     width: 90%;
+  }
+  .content-title {
+    margin-top: 20px;
   }
   .content-description {
     text-align: center;
