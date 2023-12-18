@@ -145,6 +145,9 @@ a {
   .header a {
     font-size: 1.8rem;
   }
+  .head-logo a {
+    padding-left: 20px;
+  }
   .head-menu {
     display: none;
     flex-direction: column;
