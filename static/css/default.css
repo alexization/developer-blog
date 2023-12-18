@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
 /* PC version CSS */
 html {
@@ -32,10 +33,14 @@ a {
   width: 100%;
 }
 .header a {
-  font-family: "Chakra Petch", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
   font-size: 1.6rem;
   transition: 0.5s;
   color: black;
+}
+.head-logo a {
+  font-family: "Chakra Petch", sans-serif;
 }
 .header a:hover {
   color: #9c5d47;
@@ -164,9 +169,6 @@ a {
   }
   .content {
     width: 90%;
-  }
-  .footer {
-    width: 70%;
   }
 }
 
