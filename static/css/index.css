@@ -16,7 +16,7 @@
   border: 1px rgba(0, 0, 0, 0.4) solid;
   background: none;
   cursor: pointer;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.6);
@@ -61,19 +61,20 @@
   justify-content: space-evenly;
 }
 .team-title {
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
   font-size: 1.8rem;
   margin-bottom: 0px;
 }
 .team-semititle {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
   font-size: 1.4rem;
   color: rgb(121, 121, 121);
 }
 .cate-title {
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   height: 30px;
   width: 100%;
@@ -92,7 +93,7 @@
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   color: black;
@@ -142,14 +143,14 @@
   padding-right: 20px;
 }
 .content-title {
-  font-family: "IBM Plex Sans KR", sans-serif;
-  font-weight: 700;
-  font-size: 2.8rem;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
+  font-size: 2.6rem;
   margin-bottom: 0;
   margin-top: 0;
 }
 .sub-detail {
-  font-family: "IBM Plex Sans KR", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 200;
   font-size: 1.4rem;
   margin: 0;
@@ -162,8 +163,8 @@
   padding-left: 3px;
 }
 .content-description {
-  font-family: "IBM Plex Sans KR", sans-serif;
-  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 200;
   font-size: 1.4rem;
   color: black;
 }
