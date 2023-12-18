@@ -11,10 +11,10 @@ window.addEventListener("scroll", () => {
   if (window.scrollY > headerHeight) {
     header.setAttribute(
       "style",
-      "background: #e7e7e770; box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.07); transition:0.3s;"
+      "background: rgba(255, 255, 255, 0.7); box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.07); transition:0.3s;"
     );
   } else {
-    header.setAttribute("style", "background: transparent;");
+    header.setAttribute("style", "background: transparent; transition:0.3s");
   }
 });
 
