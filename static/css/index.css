@@ -1,7 +1,89 @@
+.profile {
+  width: 100%;
+  margin-top: 80px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+.profile-text {
+  padding: 40px;
+}
+.profile-text span {
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 400;
+  font-size: 3.8rem;
+  display: inline-block;
+  background-image: linear-gradient(
+    -225deg,
+    rgba(115, 51, 0, 1) 0%,
+    rgba(134, 71, 34, 1) 17%,
+    rgba(201, 107, 41, 1) 27%,
+    rgba(224, 141, 77, 1) 37%,
+    rgba(249, 224, 107, 1) 50%,
+    rgba(255, 151, 0, 1) 67%,
+    rgba(191, 118, 24, 1) 84%,
+    rgba(115, 51, 0, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 5s linear infinite;
+  background-size: 200% auto;
+  word-break: keep-all;
+}
+@keyframes gradient {
+  100% {
+    background-position: 200%;
+  }
+}
+.profile-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 30px;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+}
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+}
+.profile-tag {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+}
+.profile-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+.profile-desc {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: #757575;
+  word-break: keep-all;
+}
+.profile-link {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+.profile-link li {
+  padding: 0 8px;
+}
 .write-box {
   width: 100%;
   height: 50px;
-  margin-top: 80px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -83,6 +165,7 @@
   font-size: 1.8rem;
   margin-bottom: 0;
   color: #424242;
+  word-break: keep-all;
 }
 
 /* Tablet and Mobile version CSS */

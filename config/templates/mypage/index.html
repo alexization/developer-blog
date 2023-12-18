@@ -3,6 +3,32 @@
   <!-- static 폴더내에 존재하는 index.css 파일 사용 -->
   <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
 
+  <!-- 상단 프로필 -->
+  <div class="profile">
+    <div class="profile-text">
+      <span>기록을 안 하면 하나도 기억이 안 나더라...</span></div>
+    <div class="profile-info">
+      <div class="profile-img"><img src="{% static 'image/profile.jpeg' %}"/>
+      </div>
+      <div class="profile-tag">
+        <div class="profile-name">Hyo Seok, Baek</div>
+        <div class="profile-desc">하나하나 채워나가는 개발 일기장</div>
+        <ul class="profile-link">
+          <li>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.github.com/alexization" target="_blank">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- 글쓰기 버튼 공간 -->
   <div class="write-box">
     {% if user.is_active %}
@@ -12,7 +38,7 @@
     {% endif %}
   </div>
 
-  <!-- 프로필 사진 / 카테고리 목록 / 게시글 목록 공간 -->
+  <!-- 게시글 목록 공간 -->
   <div class="middle">
     <!-- 게시글 박스 -->
     <div class="content">
@@ -22,11 +48,11 @@
             <p class="content-title">{{ post.p_title }}</p>
             <div class="sub-detail">
               <p>
-                <i class="fa-solid fa-bookmark"></i>
+                <i class="fa-solid fa-bookmark" style="color:#CC0000"></i>
                 {{ post.category_title }}</p>
               <p>
-                <i class="fa-regular fa-calendar"></i>
-                {{ post.p_created | date:'Y.m.d'}}</p>
+                <i class="fa-regular fa-calendar" style="color:#660000"></i>
+                {{ post.p_created | date:'Y-m-d'}}</p>
               <p>
                 <i class="fa-regular fa-comment-dots"></i>
                 댓글
