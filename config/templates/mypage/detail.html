@@ -27,7 +27,7 @@
       </div>
       <!-- 게시글 내용 -->
       <div class="post-detail">
-        <p>{{post.p_contents | linebreaksbr }}</p>
+        {{ post.get_content_markdown | safe }}
       </div>
     </div>
 
