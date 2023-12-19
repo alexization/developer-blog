@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('mypage.urls')),
     path('admin/', admin.site.urls),
+    path('markdownx/', include('markdownx.urls')),
 ]
 
 urlpatterns += static(

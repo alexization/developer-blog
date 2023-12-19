@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdown
 
 class User(AbstractUser):
     pass
@@ -15,13 +16,16 @@ class Post(models.Model):
     cate = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     p_title = models.CharField(max_length=50)
     p_desc = models.CharField(max_length=100)
-    p_contents = models.TextField()
+    p_contents = MarkdownxField()
     p_created = models.DateTimeField(auto_now_add=True, null=True)
     p_updated = models.DateTimeField(auto_now=True, null=True)
     thumbnail = models.ImageField(upload_to="post", blank=True)
 
     def __str__(self):
         return self.p_title
+    
+    def get_content_markdown(self):
+        return markdown(self.p_contents)
 
 class Comments(models.Model):
     p = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
