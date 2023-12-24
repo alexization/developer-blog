@@ -145,6 +145,20 @@ textarea {
   display: flex;
   margin-bottom: 15px;
 }
+.markdownx {
+  width: 100%;
+}
+.markdownx .markdownx-preview {
+  width: 100%;
+}
+.markdownx .markdownx-preview p {
+  font-size: 1.4rem;
+}
+.markdownx .markdownx-preview code {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
 
 @media screen and (max-width: 1023px) {
   .content {
