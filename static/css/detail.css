@@ -161,6 +161,16 @@ textarea {
   font-size: 1.6rem;
 }
 
+.markdownx .markdownx-preview h2 {
+  text-align: center;
+}
+
+.markdownx .markdownx-preview img {
+  border-radius: 2rem;
+  width: 80%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (max-width: 1023px) {
   .content {
     width: 90%;

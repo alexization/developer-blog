@@ -58,7 +58,7 @@
                 댓글
                 {{post.comments_count }}건</p>
             </div>
-            <p class="content-description">{{ post.p_desc }}</p>
+            <p class="content-description">{{ post.p_desc | truncatechars:90}}</p>
           </div>
         </div>
         {% endfor%}
