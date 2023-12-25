@@ -26,8 +26,14 @@ def main(request):
     context = {'categorys': categorys, 'posts' : posts, 'all_post' : all_post}
     return render(request, 'mypage/index.html', context)
 
+def category(request):
+
+    categorys = Category.objects.annotate(post_count=Count('post'), lower_name=Lower('cate_name')).order_by('cate_name')
+    context = {'categorys': categorys}
+    return render(request, 'mypage/category.html', context)
+
 # category.html / 카테고리 선택 페이지
-def category(request, cate_name):
+def select_category(request, cate_name):
     # lower_name 변수에 Category 테이블의 cate_name 데이터를 모두 소문자화시켜 넣어줌
     categorys = Category.objects.annotate(post_count=Count('post'), lower_name=Lower('cate_name')).order_by('cate_name')
 
