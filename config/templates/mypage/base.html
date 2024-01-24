@@ -63,16 +63,6 @@
               {% endif %}
             </li>
           </ul>
-
-          <!-- 1024px 미만의 경우 카테고리 목록이 nav-bar로 들어감 -->
-          <div class="nav-sidebar">
-            <div onclick="location.href='/';" class="nav-category-box">ALL</div>
-            {% for category in categorys %}
-              <div onclick="location.href='/category/{{ category.cate_name | lower}}/';" class="nav-category-box">
-                {{ category.cate_name }}
-              </div>
-            {% endfor %}
-          </div>
           <a href="#" class="navbar_toggleBtn">
             <i class="fa-solid fa-bars"></i>
           </a>

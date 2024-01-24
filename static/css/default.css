@@ -73,22 +73,7 @@ a {
   display: none;
   width: 100%;
 }
-.nav-category-box {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-  height: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-family: "Nanum Gothic", sans-serif;
-  font-size: 1.6rem;
-  color: black;
-  transition: 0.5s;
-}
-.nav-category-box:hover {
-  color: #9c5d47;
-}
+
 .footer {
   width: 100%;
   max-width: 800px;
